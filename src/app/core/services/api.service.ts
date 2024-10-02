@@ -1,23 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseAllPokemons, ResponsePokemon } from '@models/response/response';
+import { Users } from '@models/response/response';
 import { Observable } from 'rxjs';
 import { environment as ENV } from 'src/environments/environment';
 
-@Injectable()
+@Injectable({providedIn : 'root'})
 export class ApiService {
+  constructor(private httpClient: HttpClient) {}
 
-    constructor(private httpClient: HttpClient) {
-        
-    }
+  public getListaContatti(): Observable<Array<Users>> {
+    return this.httpClient.get<Array<Users>>(ENV.API_URL_MOCK + 'users');
+  }
 
-    public getAllPokemons() : Observable<ResponseAllPokemons>{
-        const url : string = `${ENV.apiUrl}pokemon`;
-        return this.httpClient.get<ResponseAllPokemons>(url);
-    }
+  public getContatto(id: string): Observable<Users> {
+    return this.httpClient.get<Users>(ENV.API_URL_MOCK + 'users/' + id);
+  }
 
-    public getPokemon(pokemonName : string) : Observable<ResponsePokemon> {
-        const url : string = `${ENV.apiUrl}pokemon/${pokemonName}`;
-        return this.httpClient.get<ResponsePokemon>(url);
-    }
+  public deleteContatto(id: string): Observable<Users> {
+    return this.httpClient.delete<Users>(ENV.API_URL_MOCK + 'users/' + id);
+  }
+
+  public updateContatto(id: string, user: Users): Observable<Users> {
+    return this.httpClient.put<Users>(ENV.API_URL_MOCK + 'users/' + id, user);
+  }
+
+  public createContatto(user: Users): Observable<Users> {
+    return this.httpClient.post<Users>(ENV.API_URL_MOCK + 'users', user);
+  }
 }

@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card mb-4 mx-4">
+        <div class="card-body p-4">
+          <h1>Registrati</h1>
+          <p class="text-muted">Crea il tuo account</p>
+
+          <form [formGroup]="formRegistrazione" (ngSubmit)="register()">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <app-icon name="bi bi-person"></app-icon>
+                </span>
+              </div>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Username"
+                formControlName="username"
+              />
+              <div
+                class="invalid-feedback d-block"
+                *ngIf="
+                  formRegistrazione.get('username')!.invalid &&
+                  formRegistrazione.get('username')!.touched
+                "
+              >
+                Campo obbligatorio.
+              </div>
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <app-icon name="bi bi-envelope"></app-icon>
+                </span>
+              </div>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Email"
+                formControlName="email"
+              />
+              <div
+                class="invalid-feedback d-block"
+                *ngIf="
+                  formRegistrazione.get('email')!.invalid &&
+                  formRegistrazione.get('email')!.touched
+                "
+              >
+                Campo obbligatorio.
+              </div>
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <app-icon name="bi bi-lock"></app-icon>
+                </span>
+              </div>
+              <input
+                class="form-control"
+                type="password"
+                placeholder="Password"
+                formControlName="password"
+              />
+              <div
+                class="invalid-feedback d-block"
+                *ngIf="
+                  formRegistrazione.get('password')!.invalid &&
+                  formRegistrazione.get('password')!.touched
+                "
+              >
+                Campo obbligatorio.
+              </div>
+            </div>
+
+            <div class="input-group mb-4">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <app-icon name="bi bi-lock"></app-icon>
+                </span>
+              </div>
+              <input
+                class="form-control"
+                type="password"
+                placeholder="Ripeti la password"
+                formControlName="confirmPassword"
+              />
+              <div
+                class="invalid-feedback d-block"
+                *ngIf="
+                  formRegistrazione.get('confirmPassword')!.invalid &&
+                  formRegistrazione.get('confirmPassword')!.touched
+                "
+              >
+                Campo obbligatorio.
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-block" type="submit">
+              Crea Account
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

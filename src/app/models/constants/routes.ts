@@ -1,18 +1,36 @@
 import { Routes } from '@angular/router';
-import { PokedexComponent } from '@features/pokedex/pokedex.component';
+import { LoginComponent, RegisterComponent, RubricaComponent, RubricaDetailComponent, RubricaFormComponent } from '@features/index';
 import { ROUTES_ENUM } from '@models/enum/routes';
+import { canActivate } from 'src/app/core/guards/auth.guard';
 
 export const ROUTES: Routes = [
   {
-    path: ROUTES_ENUM.POKEDEX,
-    // loadComponent : () => import('@features/pokedex/pokedex.component').then(m => m.PokedexComponent),
-    component: PokedexComponent,
+    path: ROUTES_ENUM.LOGIN,
+    component : LoginComponent
   },
   {
-    path: ROUTES_ENUM.POKEMON,
-    loadChildren: () => import('@features/pokemon/pokemon.module').then(m => m.PokemonModule),
+    path: ROUTES_ENUM.REGISTER,
+    component : RegisterComponent
   },
-
-  { path: '', redirectTo: ROUTES_ENUM.POKEDEX, pathMatch: 'full' },
-  { path: '**', redirectTo: ROUTES_ENUM.POKEDEX, pathMatch: 'full' },
+  {
+    path: ROUTES_ENUM.RUBRICA,
+    component : RubricaComponent,
+    canActivate: [canActivate],
+  },
+  {
+    path: ROUTES_ENUM.RUBRICA_DETAIL,
+    component : RubricaDetailComponent,
+    canActivate: [canActivate],
+  },
+  {
+    path: ROUTES_ENUM.RUBRICA_FORM,
+    component : RubricaFormComponent,
+    canActivate: [canActivate],
+  },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {path: '**', redirectTo: '', pathMatch: 'full'},
 ];

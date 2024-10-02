@@ -1,4 +1,7 @@
 export enum ROUTES_ENUM {
-  POKEDEX = 'pokedex',
-  POKEMON = 'pokemon',
+  LOGIN = 'login',
+  REGISTER = 'register',
+  RUBRICA = 'rubrica',
+  RUBRICA_DETAIL = 'rubrica-detail/:id',
+  RUBRICA_FORM = 'rubrica-form',
 }

@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<div class="d-flex flex-column min-vh-100 min-vw-100">
+    <app-header *ngIf="showHeader$ | async"></app-header>
+    <div class="body flex-grow-1">
+        <div class="container-lg px-4">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<!-- <app-spinner></app-spinner> -->

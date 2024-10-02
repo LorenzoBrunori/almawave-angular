@@ -1,4 +1,4 @@
 export const environment = {
     production: false, 
-    apiUrl : "https://pokeapi.co/api/v2/",
+    API_URL_MOCK : "http://localhost:3000/",
 }

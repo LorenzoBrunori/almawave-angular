@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "email": "2wJX5@example.com",
+      "name": "Gianni Bello",
+      "username": "Bret",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "name": "Ervin Howell",
+      "username": "Antonette",
+      "email": "gqjI8@example.com"
+    },
+    {
+      "id": "3",
+      "name": "Clementine Bauch",
+      "username": "Samantha",
+      "email": "N4F0O@example.com"
+    }
+  ],
+  "posts": [
+    {
+      "id": "1",
+      "title": "a title",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    }
+  ]
+}

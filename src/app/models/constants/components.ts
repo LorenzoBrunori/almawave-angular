@@ -1,7 +1,23 @@
-import { PokedexComponent } from "@features/pokedex/pokedex.component";
-import { SpinnerComponent } from "@shared/index";
+import { LoginComponent, RegisterComponent, RubricaComponent, RubricaDetailComponent, RubricaFormComponent } from "@features/index";
+import { BreadcrumbComponent, HeaderComponent, IconComponent, SpinnerComponent } from "@shared/index";
+
+const SHARED_COMPONENTS = [
+    SpinnerComponent,
+    BreadcrumbComponent,
+    HeaderComponent,
+    IconComponent
+]
+
+const FEATURES_COMPONENTS = [
+    LoginComponent,
+    RegisterComponent,
+    RubricaComponent,
+    RubricaDetailComponent,
+    RubricaFormComponent
+]
 
 export const COMPONENTS = [
-    SpinnerComponent,
-    PokedexComponent
+    ...SHARED_COMPONENTS,
+    ...FEATURES_COMPONENTS
 ]
+
