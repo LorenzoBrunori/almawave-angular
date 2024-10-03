@@ -2,8 +2,9 @@
     <app-header *ngIf="showHeader$ | async"></app-header>
     <div class="body flex-grow-1">
         <div class="container-lg px-4">
+            <app-alert></app-alert>
             <router-outlet></router-outlet>
         </div>
     </div>
 </div>
-<!-- <app-spinner></app-spinner> -->
+<app-spinner [spinnerLoader]="(spinnerService.isLoading$ | async)!"></app-spinner>

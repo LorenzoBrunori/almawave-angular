@@ -1,0 +1,9 @@
+<ng-container *ngIf="alertService.alert$| async as alert">
+  <div class="alert fade-in" role="alert" [ngClass]="setTypeAlert(alert)">
+    <div class="d-flex justify-content-between">
+      <h4 class="alert-heading">{{alert.title}}</h4>
+      <button *ngIf="alert.closeButton" class="btn-close" (click)="hideAlert()"></button>
+    </div>
+    <p>{{alert.message}}</p>
+  </div>
+</ng-container>

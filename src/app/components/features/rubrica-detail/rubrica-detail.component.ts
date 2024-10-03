@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertTypeEnum } from '@models/enum/alert.enum';
 import { Users } from '@models/response/response';
 import { switchMap, take } from 'rxjs';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { ApiService } from 'src/app/core/services/api.service';
 
 @Component({
@@ -23,7 +25,8 @@ export class RubricaDetailComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService
   ) {
     this.initFormDetail();
   }
@@ -44,7 +47,23 @@ export class RubricaDetailComponent implements OnInit {
       .pipe(take(1))
       .subscribe({
         next: () => {
+          this.alertService.alert$.next({
+            type: AlertTypeEnum.SUCCESS,
+            message: 'Contatto modificato',
+            show: true,
+            closeButton: true,
+            title: 'Operazione eseguita con successo',
+          });
           this.router.navigate(['/rubrica']);
+        },
+        error: (err) => {
+          this.alertService.alert$.next({
+            type: AlertTypeEnum.DANGER,
+            message: 'Errore nella modifica',
+            show: true,
+            closeButton: true,
+            title: 'Attenzione',
+          });
         },
       });
   }
@@ -55,7 +74,24 @@ export class RubricaDetailComponent implements OnInit {
       .pipe(take(1))
       .subscribe({
         next: () => {
+          this.alertService.alert$.next({
+            type: AlertTypeEnum.SUCCESS,
+            message: 'Contatto eliminato',
+            show: true,
+            closeButton: true,
+            title: 'Operazione eseguita con successo',
+          });
+
           this.router.navigate(['/rubrica']);
+        },
+        error: (err) => {
+          this.alertService.alert$.next({
+            type: AlertTypeEnum.DANGER,
+            message: 'Errore nella cancellazione',
+            show: true,
+            closeButton: true,
+            title: 'Attenzione',
+          });
         },
       });
   }

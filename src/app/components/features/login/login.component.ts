@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertTypeEnum } from '@models/enum/alert.enum';
 import { take } from 'rxjs';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
@@ -17,7 +19,11 @@ export class LoginComponent implements OnInit {
   public formLogin: FormGroup = new FormGroup({});
   //#endregion
 
-  constructor(private router: Router, public loginService: LoginService) {
+  constructor(
+    private router: Router,
+    private alertService: AlertService,
+    public loginService: LoginService,
+  ) {
     this.initFormLogin();
   }
 
@@ -38,6 +44,15 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (value) => {
           this.router.navigate(['/rubrica']);
+        },
+        error: (err) => {
+          this.alertService.alert$.next({
+            type: AlertTypeEnum.DANGER,
+            message: 'Errore nel login',
+            show: true,
+            closeButton: true,
+            title: 'Attenzione',
+          });
         },
       });
   }

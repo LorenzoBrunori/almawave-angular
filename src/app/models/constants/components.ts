@@ -1,11 +1,12 @@
 import { LoginComponent, RegisterComponent, RubricaComponent, RubricaDetailComponent, RubricaFormComponent } from "@features/index";
-import { BreadcrumbComponent, HeaderComponent, IconComponent, SpinnerComponent } from "@shared/index";
+import { AlertComponent, BreadcrumbComponent, HeaderComponent, IconComponent, SpinnerComponent } from "@shared/index";
 
 const SHARED_COMPONENTS = [
     SpinnerComponent,
     BreadcrumbComponent,
     HeaderComponent,
-    IconComponent
+    IconComponent,
+    AlertComponent
 ]
 
 const FEATURES_COMPONENTS = [
