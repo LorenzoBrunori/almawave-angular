@@ -11,7 +11,7 @@
             </p>
             <button type="button" class="btn btn-success" (click)="goToInsert()">Vai all'inserimento</button>
         </div>
-        <form [formGroup]="formSearch" (ngSubmit)="search()">
+        <form [formGroup]="formSearch">
           <div class="tab-content rounded-button">
             <div class="tab-pane p-3 active" role="tabpanel">
               <div class="row">
@@ -43,9 +43,7 @@
                 </div>
               </div>
 
-              <div class="d-flex justify-content-end flex-row mt-3">
-                <button type="submit" class="btn btn-primary">Cerca</button>
-              </div>
+              
             </div>
           </div>
         </form>

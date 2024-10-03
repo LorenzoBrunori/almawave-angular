@@ -1,6 +1,5 @@
-import { Location } from '@angular/common';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { SpinnerService } from './core/services/spinner.service';
 
@@ -9,7 +8,7 @@ import { SpinnerService } from './core/services/spinner.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, AfterViewInit{
+export class AppComponent implements OnInit {
   public showHeader$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
@@ -17,29 +16,22 @@ export class AppComponent implements OnInit, AfterViewInit{
     false
   );
   constructor(
-    private location: Location,
     private activatedRoute: ActivatedRoute,
-    public spinnerService : SpinnerService
-  ) {
-  }
+    private router : Router,
+    public spinnerService: SpinnerService
+  ) {}
 
   ngOnInit(): void {
     this.loadRoute();
   }
 
-  ngAfterViewInit(): void {
-    this.showSpinner$ = this.spinnerService.isLoading$;
-    
-  }
-
   private loadRoute(): void {
-    this.activatedRoute.url.subscribe((url) => {
-      this.showHeader$.next(
-        this.location.path().includes('login') ||
-          this.location.path().includes('register')
-          ? false
-          : true
-      );
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.showHeader$.next(
+          !(event.url === '/login' || event.url === '/register')
+        );
+      }
     });
   }
 }

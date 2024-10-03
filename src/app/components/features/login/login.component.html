@@ -19,6 +19,15 @@
                   placeholder="Username"
                   formControlName="username"
                 />
+                <div
+                  class="invalid-feedback d-block"
+                  *ngIf="
+                    formLogin.get('username')!.invalid &&
+                    formLogin.get('username')!.touched
+                  "
+                >
+                  Campo obbligatorio.
+                </div>
               </div>
               <div class="input-group mb-4">
                 <div class="input-group-prepend">
@@ -32,10 +41,23 @@
                   placeholder="Password"
                   formControlName="password"
                 />
+                <div
+                  class="invalid-feedback d-block"
+                  *ngIf="
+                    formLogin.get('password')!.invalid &&
+                    formLogin.get('password')!.touched
+                  "
+                >
+                  Campo obbligatorio.
+                </div>
               </div>
               <div class="row">
                 <div class="col-6">
-                  <button class="btn btn-primary px-4" type="submit" [disabled]="formLogin.invalid">
+                  <button
+                    class="btn btn-primary px-4"
+                    type="submit"
+                    [disabled]="formLogin.invalid"
+                  >
                     Login
                   </button>
                 </div>
@@ -49,21 +71,21 @@
           </div>
         </div>
 
-
         <div class="card col-md-5 text-white bg-primary py-5 d-md-flex">
           <div class="card-body text-center">
             <div>
               <h2>Sign up</h2>
-              <p>
-                Crea un nuovo account. 
-              </p>
-              <button class="btn btn-lg btn-outline-light mt-3" type="button" (click)="goToRegister()">
+              <p>Crea un nuovo account.</p>
+              <button
+                class="btn btn-lg btn-outline-light mt-3"
+                type="button"
+                (click)="goToRegister()"
+              >
                 Registrati Ora!
               </button>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>

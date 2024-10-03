@@ -12,7 +12,6 @@ import { Card } from '@models/app/card';
 export class CardComponent implements OnInit {
   //#region Public Properties
   @Input() public card: Partial<Card> = {} as Partial<Card>;
-  @Output() public onClick = new EventEmitter();
   //#endregion
 
   //#region Private Properties
@@ -22,9 +21,6 @@ export class CardComponent implements OnInit {
   //#region Public Methods
   ngOnInit(): void {}
 
-  public onClickEvent() : void {
-    this.onClick.emit(this.card.link);
-  }
   //#endregion
 
   //#region Private Methods
