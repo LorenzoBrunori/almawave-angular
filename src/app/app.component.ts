@@ -7,12 +7,10 @@ import { SpinnerService } from './core/services/spinner.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  providers: [SpinnerService],
 })
 export class AppComponent implements OnInit {
   public showHeader$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
-  );
-  public showSpinner$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
   constructor(

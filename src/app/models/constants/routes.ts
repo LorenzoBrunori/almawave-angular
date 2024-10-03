@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent, RegisterComponent, RubricaComponent, RubricaDetailComponent, RubricaFormComponent } from '@features/index';
 import { ROUTES_ENUM } from '@models/enum/routes';
-import { canActivate } from 'src/app/core/guards/auth.guard';
 
 export const ROUTES: Routes = [
   {
@@ -15,22 +14,13 @@ export const ROUTES: Routes = [
   {
     path: ROUTES_ENUM.RUBRICA,
     component : RubricaComponent,
-    canActivate: [canActivate],
   },
   {
     path: ROUTES_ENUM.RUBRICA_DETAIL,
     component : RubricaDetailComponent,
-    canActivate: [canActivate],
   },
   {
     path: ROUTES_ENUM.RUBRICA_FORM,
     component : RubricaFormComponent,
-    canActivate: [canActivate],
   },
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
-  {path: '**', redirectTo: '', pathMatch: 'full'},
 ];

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AlertTypeEnum } from '@models/enum/alert.enum';
-import { Users } from '@models/response/response';
-import { switchMap, take } from 'rxjs';
+import { take } from 'rxjs';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { ApiService } from 'src/app/core/services/api.service';
 
@@ -70,9 +69,9 @@ export class RubricaFormComponent implements OnInit {
   //#region Private methods
   private initFormInsert(): void {
     this.formInsert = new FormGroup({
-      username: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.email, Validators.required]),
-      name: new FormControl('', [Validators.required]),
+      username: new FormControl('', ),
+      email: new FormControl('', ),
+      name: new FormControl('', ),
     });
   }
   //#endregion

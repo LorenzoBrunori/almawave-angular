@@ -36,15 +36,6 @@
                     placeholder="Username"
                     formControlName="username"
                   />
-                  <div
-                    class="invalid-feedback d-block"
-                    *ngIf="
-                      formDetail.get('username')!.invalid &&
-                      formDetail.get('username')!.touched
-                    "
-                  >
-                    Campo obbligatorio.
-                  </div>
                 </div>
 
                 <div class="mb-3 col-xl-4 col-md-12 col-sm-12 col-12">
@@ -54,15 +45,7 @@
                     placeholder="Nome"
                     formControlName="name"
                   />
-                  <div
-                    class="invalid-feedback d-block"
-                    *ngIf="
-                      formDetail.get('name')!.invalid &&
-                      formDetail.get('name')!.touched
-                    "
-                  >
-                    Campo obbligatorio.
-                  </div>
+
                 </div>
 
                 <div class="mb-3 col-xl-4 col-md-12 col-sm-12 col-12">
@@ -72,27 +55,7 @@
                     placeholder="Email"
                     formControlName="email"
                   />
-                  <div
-                    class="invalid-feedback d-block"
-                    *ngIf="
-                      formDetail.get('email')!.invalid &&
-                      formDetail.get('email')!.touched &&
-                      formDetail.get('email')!.hasError('required')
-                    "
-                  >
-                    Campo obbligatorio.
-                  </div>
-
-                  <div
-                    class="invalid-feedback d-block"
-                    *ngIf="
-                      formDetail.get('email')!.invalid &&
-                      formDetail.get('email')!.touched &&
-                      formDetail.get('email')!.hasError('email')
-                    "
-                  >
-                    Email non valida.
-                  </div>
+                  
                 </div>
               </div>
 

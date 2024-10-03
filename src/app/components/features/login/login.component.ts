@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertTypeEnum } from '@models/enum/alert.enum';
 import { take } from 'rxjs';
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private alertService: AlertService,
-    public loginService: LoginService,
+    public loginService: LoginService
   ) {
     this.initFormLogin();
   }
@@ -61,8 +61,8 @@ export class LoginComponent implements OnInit {
   //#region Private methods
   private initFormLogin(): void {
     this.formLogin = new FormGroup({
-      username: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
+      username: new FormControl(''),
+      password: new FormControl(''),
     });
   }
   //#endregion

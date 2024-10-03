@@ -4,7 +4,7 @@ import {
   HttpInterceptor,
   HttpRequest,
 } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { SpinnerService } from '../../services/spinner.service';
@@ -20,9 +20,7 @@ export class SpinnerInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     this.callCounter++;
-    setTimeout(() => {
-      this.spinnerService.isLoading$.next(true);
-    });
+    this.spinnerService.isLoading$.next(true);
     return next.handle(req).pipe(
       finalize(() => {
         this.callCounter--;

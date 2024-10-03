@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertTypeEnum } from '@models/enum/alert.enum';
 import { Users } from '@models/response/response';
@@ -42,7 +42,7 @@ export class RubricaDetailComponent implements OnInit {
         email: this.formDetail.value.email,
         name: this.formDetail.value.name,
         username: this.formDetail.value.username,
-        id : this.contatto.id
+        id: this.contatto.id,
       })
       .pipe(take(1))
       .subscribe({
@@ -110,9 +110,9 @@ export class RubricaDetailComponent implements OnInit {
   //#region Private methods
   private initFormDetail(): void {
     this.formDetail = new FormGroup({
-      username: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.email, Validators.required]),
-      name: new FormControl('', [Validators.required]),
+      username: new FormControl(''),
+      email: new FormControl(''),
+      name: new FormControl(''),
     });
   }
 
