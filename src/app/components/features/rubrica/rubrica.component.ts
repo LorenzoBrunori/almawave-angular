@@ -17,7 +17,10 @@ export class RubricaComponent implements OnInit, OnDestroy {
   //#endregion
 
   //#region Public variables
-  public formSearch: FormGroup = new FormGroup({});
+  public name : string = '';
+  public username : string = '';
+  public email : string = '';
+
   public listaContatti: Users[] = [];
   //#endregion
 
@@ -26,7 +29,6 @@ export class RubricaComponent implements OnInit, OnDestroy {
     private router: Router,
     private alertService: AlertService
   ) {
-    this.initFormSearch();
   }
 
   //#region Public methods
@@ -46,13 +48,6 @@ export class RubricaComponent implements OnInit, OnDestroy {
   //#endregion
 
   //#region Private methods
-  private initFormSearch(): void {
-    this.formSearch = new FormGroup({
-      username: new FormControl(''),
-      email: new FormControl(''),
-      name: new FormControl(''),
-    });
-  }
 
   private getListaContatti(): void {
     this.apiService

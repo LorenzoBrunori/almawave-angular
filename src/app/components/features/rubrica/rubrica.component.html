@@ -11,7 +11,7 @@
             </p>
             <button type="button" class="btn btn-success" (click)="goToInsert()">Vai all'inserimento</button>
         </div>
-        <form [formGroup]="formSearch">
+        <form >
           <div class="tab-content rounded-button">
             <div class="tab-pane p-3 active" role="tabpanel">
               <div class="row">
@@ -20,7 +20,8 @@
                     type="text"
                     class="form-control"
                     placeholder="Username"
-                    formControlName="username"
+                    [(ngModel)]="username"
+                    name="username"
                   />
                 </div>
 
@@ -29,7 +30,8 @@
                     type="text"
                     class="form-control"
                     placeholder="Nome"
-                    formControlName="name"
+                    [(ngModel)]="name"
+                    name="name"
                   />
                 </div>
 
@@ -38,7 +40,8 @@
                     type="text"
                     class="form-control"
                     placeholder="Email"
-                    formControlName="email"
+                    [(ngModel)]="email"
+                    name="email"
                   />
                 </div>
               </div>

@@ -15,21 +15,22 @@ export class RegisterComponent implements OnInit {
   //#endregion
 
   //#region Public variables
-  public formRegistrazione: FormGroup = new FormGroup({});
+  public username: string = '';
+  public email: string = '';
+  public password: string = '';
+  public confirmPassword: string = '';
   //#endregion
 
   constructor(private loginService: LoginService, private router: Router) {
-    this.initFormRegistrazione();
   }
 
   //#region Public methods
   public ngOnInit(): void {}
 
   public register(): void {
-    console.log(this.formRegistrazione.value);
     const user: User = {
-      username: this.formRegistrazione.value.username,
-      password: this.formRegistrazione.value.password,
+      username: this.username,
+      password: this.password,
       id: '999',
     };
     this.loginService
@@ -45,13 +46,6 @@ export class RegisterComponent implements OnInit {
   //#endregion
 
   //#region Private methods
-  private initFormRegistrazione(): void {
-    this.formRegistrazione = new FormGroup({
-      username: new FormControl(''),
-      email: new FormControl(''),
-      password: new FormControl(''),
-      confirmPassword: new FormControl(''),
-    });
-  }
+
   //#endregion
 }

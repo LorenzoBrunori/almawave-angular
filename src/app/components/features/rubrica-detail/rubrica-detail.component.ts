@@ -17,7 +17,10 @@ export class RubricaDetailComponent implements OnInit {
   //#endregion
 
   //#region Public variables
-  public formDetail: FormGroup = new FormGroup({});
+  public name : string = '';
+  public username : string = '';
+  public email : string = '';
+
   public contatto: Users = {} as Users;
   public modificaEnabled: boolean = false;
   //#endregion
@@ -28,7 +31,6 @@ export class RubricaDetailComponent implements OnInit {
     private router: Router,
     private alertService: AlertService
   ) {
-    this.initFormDetail();
   }
 
   //#region Public methods
@@ -39,9 +41,9 @@ export class RubricaDetailComponent implements OnInit {
   public update(): void {
     this.apiService
       .updateContatto(this.contatto.id, {
-        email: this.formDetail.value.email,
-        name: this.formDetail.value.name,
-        username: this.formDetail.value.username,
+        email: this.email,
+        name: this.name,
+        username: this.username,
         id: this.contatto.id,
       })
       .pipe(take(1))
@@ -97,25 +99,17 @@ export class RubricaDetailComponent implements OnInit {
   }
 
   public abilitaModifica(): void {
-    this.formDetail.enable({ emitEvent: false });
+    // this.formDetail.enable({ emitEvent: false });
     this.modificaEnabled = !this.modificaEnabled;
   }
 
   public disabilitaModifica(): void {
-    this.formDetail.disable({ emitEvent: false });
+    // this.formDetail.disable({ emitEvent: false });
     this.modificaEnabled = !this.modificaEnabled;
   }
   //#endregion
 
   //#region Private methods
-  private initFormDetail(): void {
-    this.formDetail = new FormGroup({
-      username: new FormControl(''),
-      email: new FormControl(''),
-      name: new FormControl(''),
-    });
-  }
-
   private loadContatto(): void {
     this.activatedRoute.paramMap
       .pipe(
@@ -127,16 +121,9 @@ export class RubricaDetailComponent implements OnInit {
       )
       .subscribe((value: Users) => {
         this.contatto = { ...value };
-        this.formDetail
-          .get('username')
-          ?.patchValue(value.username, { emitEvent: false });
-        this.formDetail
-          .get('email')
-          ?.patchValue(value.email, { emitEvent: false });
-        this.formDetail
-          .get('name')
-          ?.patchValue(value.name, { emitEvent: false });
-        this.formDetail.disable({ emitEvent: false });
+        this.name = value.name;
+        this.username = value.username;
+        this.email = value.email;
       });
   }
   //#endregion

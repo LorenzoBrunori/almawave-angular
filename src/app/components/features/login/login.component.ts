@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit {
   //#endregion
 
   //#region Public variables
-  public formLogin: FormGroup = new FormGroup({});
+  public username: string = '';
+  public password: string = '';
   //#endregion
 
   constructor(
@@ -24,7 +25,6 @@ export class LoginComponent implements OnInit {
     private alertService: AlertService,
     public loginService: LoginService
   ) {
-    this.initFormLogin();
   }
 
   //#region Public methods
@@ -35,11 +35,8 @@ export class LoginComponent implements OnInit {
   }
 
   public login(): void {
-    if (this.formLogin.invalid) {
-      return;
-    }
     this.loginService
-      .login(this.formLogin.value.username, this.formLogin.value.password)
+      .login(this.username, this.password)
       .pipe(take(1))
       .subscribe({
         next: (value) => {
@@ -59,11 +56,5 @@ export class LoginComponent implements OnInit {
   //#endregion
 
   //#region Private methods
-  private initFormLogin(): void {
-    this.formLogin = new FormGroup({
-      username: new FormControl(''),
-      password: new FormControl(''),
-    });
-  }
   //#endregion
 }

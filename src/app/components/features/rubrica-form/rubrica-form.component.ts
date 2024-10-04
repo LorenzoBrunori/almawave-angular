@@ -16,7 +16,9 @@ export class RubricaFormComponent implements OnInit {
   //#endregion
 
   //#region Public variables
-  public formInsert: FormGroup = new FormGroup({});
+  public name : string = '';
+  public username : string = '';
+  public email : string = '';
   //#endregion
 
   constructor(
@@ -24,7 +26,6 @@ export class RubricaFormComponent implements OnInit {
     private router: Router,
     private alertService: AlertService
   ) {
-    this.initFormInsert();
   }
 
   //#region Public methods
@@ -34,9 +35,9 @@ export class RubricaFormComponent implements OnInit {
   public insert(): void {
     this.apiService
       .createContatto({
-        email: this.formInsert.value.email,
-        name: this.formInsert.value.name,
-        username: this.formInsert.value.username,
+        email: this.email,
+        name: this.name,
+        username: this.username,
         id : Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
       })
       .pipe(take(1))
@@ -67,12 +68,6 @@ export class RubricaFormComponent implements OnInit {
   //#endregion
 
   //#region Private methods
-  private initFormInsert(): void {
-    this.formInsert = new FormGroup({
-      username: new FormControl('', ),
-      email: new FormControl('', ),
-      name: new FormControl('', ),
-    });
-  }
+
   //#endregion
 }

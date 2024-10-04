@@ -8,7 +8,7 @@
         <div class="d-flex justify-content-between flex-row flex-nowrap">
           <p class="small">É possibile creare un contatto.</p>
         </div>
-        <form [formGroup]="formInsert" (ngSubmit)="insert()">
+        <form (ngSubmit)="insert()">
           <div class="tab-content rounded-button">
             <div class="tab-pane p-3 active" role="tabpanel">
               <div class="row">
@@ -17,7 +17,8 @@
                     type="text"
                     class="form-control"
                     placeholder="Username"
-                    formControlName="username"
+                    [(ngModel)]="username"
+                    name="username"
                   />
                 </div>
 
@@ -26,7 +27,8 @@
                     type="text"
                     class="form-control"
                     placeholder="Nome"
-                    formControlName="name"
+                    [(ngModel)]="name"
+                    name="name"
                   />
 
                 </div>
@@ -36,7 +38,8 @@
                     type="text"
                     class="form-control"
                     placeholder="Email"
-                    formControlName="email"
+                    [(ngModel)]="email"
+                    name="email"
                   />
                 </div>
               </div>
@@ -45,7 +48,7 @@
                 <button
                   type="submit"
                   class="btn btn-primary"
-                  [disabled]="formInsert.invalid"
+                  [disabled]="!email || !name || !username"
                 >
                   Aggiungi
                 </button>
