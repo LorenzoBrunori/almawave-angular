@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "json-server": "cd src/assets/db_mock && npx json-server db.json -p 3000 -h localhost",
     "test": "ng test"
   },
   "private": true,
